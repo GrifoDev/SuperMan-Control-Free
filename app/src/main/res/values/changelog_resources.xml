@@ -9,21 +9,19 @@
     This order is how they will appear in the dialog
     Make any order you want from top to bottom-->
     <string-array name="changelog_items">
-        <item>Rebased on latest DQB7 updated</item>
-        <item>Fully retweaked and remodded on february base</item>
-        <item>Left signal added</item>
-        <item>Background in reboot menu added</item>
-        <item>Customize carrier on lockscreen statusbar</item>
-        <item>Moved theme into separate aroma installer</item>
-        <item>Better customizations of init.d/build.prop tweaks</item>
-        <item>Ambient display added as aroma choice</item>
-        <item>Toast animations added in romcontrol</item>
-        <item>Camera mod updated to V8.1</item>
-        <item>Matrix in recent panel</item>
+        <item>Updated base to DQBO release</item>
+        <item>Updated all kernels with latest ramdisk DQBO</item>
+        <item>Left signal hidden on lockscreen (before it showed on right side)</item>
+        <item>Updated samsung pay apps and framework</item>
+        <item>Reworked RomControl app (nearly ready for PlayStore)</item>
+        <item>Pulldown menu is now fully colorable</item>
+        <item>Blur in pulldown added</item>
+        <item>Custom signal/wifi/alarm icons added</item>
+        <item>Colorable notifications</item>
+        <item>Colorable clock on lockscreen</item>
+        <item>Back to kill option added</item>
         <item>Kernels updated with DQB7 ramdisk</item>
-        <item>All included BL to DQB7 updated</item>
-        <item>Reworked RomControl</item>
-        <item>Hopefully google assistant fixed</item>
+        <item>All included BL to DQBO updated</item>
         <item>Many SystemUI tweaks, please check XDA or Telegram for full changelog</item>
     </string-array>
 
