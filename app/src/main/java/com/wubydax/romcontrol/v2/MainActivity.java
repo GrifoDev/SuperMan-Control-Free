@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,9 +21,12 @@ import android.view.View;
 
 import com.wubydax.romcontrol.v2.utils.BackupRestoreIntentService;
 import com.wubydax.romcontrol.v2.utils.Constants;
+import com.wubydax.romcontrol.v2.utils.FileHelper;
 import com.wubydax.romcontrol.v2.utils.MyDialogFragment;
 import com.wubydax.romcontrol.v2.utils.SuTask;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /*      Created by Roberto Mariani and Anna Berkovitch, 2015-2016
@@ -46,6 +51,13 @@ public class MainActivity extends AppCompatActivity
     private FragmentManager mFragmentManager;
     private SharedPreferences mSharedPreferences;
     private ArrayList<Integer> mNavMenuItemsIds;
+    private final String TEMP_FILE_NAME = ".other_temp.xml";
+    private final String cmdRT = "cat /system/csc/others.xml > " + Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + "\n";
+    private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
+    private String result;
+    private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME);
+    File direct = new File(Environment.getExternalStorageDirectory() + "/.tmp");
+    Process p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +80,30 @@ public class MainActivity extends AppCompatActivity
         }
         setTitle(titles[lastFragmentIndex]);
         initViews();
+        try {
+            p = Runtime.getRuntime().exec("su");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (!direct.exists()) {
+            direct.mkdir(); //directory is created;
+        }
+        try {
+            p = Runtime.getRuntime().exec("su");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileHelper.copyFileToTemp(cmdRT, p);
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                result = FileHelper.readFile(tempFile);
+                FileHelper.investInput(result, tempFile);
+                FileHelper.copyFileToRoot(cmdTR, p);
+            }
+        };
+        Handler h = new Handler();
+        h.postDelayed(r, 1000);
 
     }
 

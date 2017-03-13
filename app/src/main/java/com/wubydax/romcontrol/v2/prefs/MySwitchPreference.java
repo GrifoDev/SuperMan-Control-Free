@@ -3,6 +3,7 @@ package com.wubydax.romcontrol.v2.prefs;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Environment;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.SwitchPreference;
@@ -10,10 +11,15 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.wubydax.romcontrol.v2.MainActivity;
 import com.wubydax.romcontrol.v2.R;
+import com.wubydax.romcontrol.v2.utils.FileHelper;
 import com.wubydax.romcontrol.v2.utils.Utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /*      Created by Roberto Mariani and Anna Berkovitch, 13/06/2016
@@ -37,6 +43,13 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
     private boolean mIsSilent, mIsRebootRequired;
     private ArrayList<Preference> mReverseDependents;
     private String mReverseDependencyKey;
+    private final String TEMP_FILE_NAME = ".other_temp.xml";
+    private final String cmdRT = "cat /system/csc/others.xml > " + Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + "\n";
+    private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
+    private String result;
+    private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME);
+    File direct = new File(Environment.getExternalStorageDirectory() + "/.tmp");
+    Process p;
 
     public MySwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -48,6 +61,7 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
         typedArray.recycle();
         mContentResolver = context.getContentResolver();
         setOnPreferenceChangeListener(this);
+
     }
 
     @Override
@@ -104,7 +118,30 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
             }
         }
 
-        return true;
+    // Is running when switch is toggled
+if (getKey().equals("dataIcon")) {
+    try {
+        p = Runtime.getRuntime().exec("su");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    if (dbInt == 1) {
+        //LTE
+        result = FileHelper.readFile(tempFile);
+        result = result.replace("<CscFeature_SystemUI_ConfigOverrideDataIcon>4G</CscFeature_SystemUI_ConfigOverrideDataIcon>", "<CscFeature_SystemUI_ConfigOverrideDataIcon>LTE</CscFeature_SystemUI_ConfigOverrideDataIcon>");
+        FileHelper.saveFile(result, tempFile);
+        FileHelper.copyFileToRoot(cmdTR, p);
+    } else if (dbInt == 0) {
+        //4G
+        result = FileHelper.readFile(tempFile);
+        result = result.replace("<CscFeature_SystemUI_ConfigOverrideDataIcon>LTE</CscFeature_SystemUI_ConfigOverrideDataIcon>", "<CscFeature_SystemUI_ConfigOverrideDataIcon>4G</CscFeature_SystemUI_ConfigOverrideDataIcon>");
+        FileHelper.saveFile(result, tempFile);
+        FileHelper.copyFileToRoot(cmdTR, p);
+    }
+}
+    return true;
+
     }
 
 
