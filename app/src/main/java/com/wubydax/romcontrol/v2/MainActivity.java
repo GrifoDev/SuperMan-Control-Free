@@ -88,11 +88,7 @@ public class MainActivity extends AppCompatActivity
         if (!direct.exists()) {
             direct.mkdir(); //directory is created;
         }
-        try {
-            p = Runtime.getRuntime().exec("su");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         FileHelper.copyFileToTemp(cmdRT, p);
         Runnable r = new Runnable() {
             @Override
