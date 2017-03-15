@@ -18,6 +18,7 @@ import com.wubydax.romcontrol.v2.R;
 import com.wubydax.romcontrol.v2.utils.FileHelper;
 import com.wubydax.romcontrol.v2.utils.Utils;
 
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,10 +46,10 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
     private String mReverseDependencyKey;
     private final String TEMP_FILE_NAME = ".other_temp.xml";
     private final String cmdRT = "cat /system/csc/others.xml > " + Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + "\n";
-    private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
+    private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
     private String result;
-    private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME);
-    File direct = new File(Environment.getExternalStorageDirectory() + "/.tmp");
+    private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME);
+    File direct = new File(Environment.getExternalStorageDirectory() + "/.tmpRC");
     Process p;
 
     public MySwitchPreference(Context context, AttributeSet attrs) {
@@ -118,7 +119,7 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
             }
         }
 
-    // Is running when switch is toggled
+    // Is running when DataIconSwitch is toggled
 if (getKey().equals("dataIcon")) {
     try {
         p = Runtime.getRuntime().exec("su");
@@ -140,6 +141,28 @@ if (getKey().equals("dataIcon")) {
         FileHelper.copyFileToRoot(cmdTR, p);
     }
 }
+
+    if(getKey().equals("imsservice")) {
+        try {
+            p = Runtime.getRuntime().exec("su");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DataOutputStream outs = new DataOutputStream(p.getOutputStream());
+            outs.writeBytes("mount -o rw,remount /system\n");
+            outs.writeBytes("mv /system/priv-app/imsservice/imsservice.apk /system/priv-app/imsservice/imsservice.tmp\n");
+            outs.writeBytes("mv /system/priv-app/imsservice/imsservice.bak /system/priv-app/imsservice/imsservice.apk\n");
+            outs.writeBytes("mv /system/priv-app/imsservice/imsservice.tmp /system/priv-app/imsservice/imsservice.bak\n");
+            outs.writeBytes("mount -o ro,remount /system\n");
+            outs.flush();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
     return true;
 
     }

@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<Integer> mNavMenuItemsIds;
     private final String TEMP_FILE_NAME = ".other_temp.xml";
     private final String cmdRT = "cat /system/csc/others.xml > " + Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + "\n";
-    private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
+    private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
     private String result;
-    private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmp/" + TEMP_FILE_NAME);
-    File direct = new File(Environment.getExternalStorageDirectory() + "/.tmp");
+    private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME);
+    File direct = new File(Environment.getExternalStorageDirectory() + "/.tmpRC");
     Process p;
 
     @Override

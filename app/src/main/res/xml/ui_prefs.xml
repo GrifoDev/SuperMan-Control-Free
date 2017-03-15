@@ -257,13 +257,14 @@
                 app:packageNameToKill="com.android.systemui" />
         </PreferenceCategory>
         <PreferenceCategory
-            android:title="DataIcon">
+            android:title="@string/SignalDataIcon">
         <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
             android:defaultValue="true"
             android:key="dataIcon"
-            android:summaryOff="4G"
-            android:summaryOn="LTE"
-            android:title="DataIcon" />
+            android:summaryOff="@string/DataIcon4G"
+            android:summaryOn="@string/DataIconLTE"
+            android:title="@string/SignalDataIcon"
+            app:rebootDevice="true"/>
         </PreferenceCategory>
         <PreferenceCategory
             android:title="@string/SignalIcon">
@@ -1217,6 +1218,13 @@
                 android:summaryOff="@string/Off"
                 android:summaryOn="@string/On"
                 android:title="@string/MiscUBS"
+                app:rebootDevice="true" />
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:key="imsservice"
+                android:summaryOff="@string/Off"
+                android:summaryOn="@string/On"
+                android:title="@string/Imsserivce"
                 app:rebootDevice="true" />
             <com.wubydax.romcontrol.v2.prefs.MyListPreference
                 android:defaultValue="3000"
