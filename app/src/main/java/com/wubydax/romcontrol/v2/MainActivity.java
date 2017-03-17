@@ -90,16 +90,11 @@ public class MainActivity extends AppCompatActivity
         }
 
         FileHelper.copyFileToTemp(cmdRT, p);
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
                 result = FileHelper.readFile(tempFile);
                 FileHelper.investInput(result, tempFile);
                 FileHelper.copyFileToRoot(cmdTR, p);
-            }
-        };
-        Handler h = new Handler();
-        h.postDelayed(r, 1000);
+
+
 
     }
 
