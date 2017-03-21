@@ -479,6 +479,7 @@
     <string name="SignalTitle">Wifi/Signal icon settings</string>
     <string name="SignalSummary">Settings related to Wifi and Signal icon</string>
     <string name="Signal">Wifi/Signal Position</string>
+    <string name="SignalDataIcon">DataIcon</string>
     <string name="SignalIcon">Change Statusbar Icons</string>
     <string name="SignalIconChooser">Choose custom signal icon</string>
     <string name="SignalIconChooserSim2">Choose custom signal icon for sim 2 (dual sim)</string>
@@ -636,6 +637,9 @@
     <string name="AboutAFHRom">Download latest SuperMan-Rom</string>
     <string name="AboutAFHSuperKernel">Download latest SuperKernel</string>
     <string name="AboutAFHSuperStockKernel">Download latest SuperStock-Kernel</string>
+    <string name="DataIconLTE">LTE</string>
+    <string name="DataIcon4G">4G</string>
+    <string name="Imsserivce">Hide RCS Icon in Statusbar</string>
 
     <!--These strings are to set the default fragment to open for the first time the app launches-->
 </resources>
