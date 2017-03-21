@@ -23,7 +23,7 @@
             android:title="@string/AboutAFHRom">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.androidfilehost.com/?fid=817550096634746726" />
+                android:data="https://www.androidfilehost.com/?fid=817550096634750162" />
         </PreferenceScreen>
         <PreferenceScreen
             android:icon="@drawable/afh"
@@ -37,7 +37,7 @@
             android:title="@string/AboutAFHSuperStockKernel">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.androidfilehost.com/?fid=817550096634747652" />
+                android:data="https://www.androidfilehost.com/?fid=529152257862708706" />
         </PreferenceScreen>
     </PreferenceCategory>
 
@@ -143,6 +143,18 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://t.me/SuperManRom" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/AboutGooglePlus">
+        <PreferenceScreen
+            android:icon="@drawable/gplus"
+            android:summary="@string/AboutGooglePlusSummary"
+            android:title="@string/AboutGooglePlus">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://plus.google.com/communities/108548285682852156652" />
         </PreferenceScreen>
     </PreferenceCategory>
 

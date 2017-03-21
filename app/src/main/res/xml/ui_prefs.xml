@@ -74,21 +74,40 @@
                 android:summary="%s"
                 android:title="@string/BatteryBarThick" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="true"
-                hexValue="true"
-                android:defaultValue="-1"
+                android:defaultValue="#ff06ff00"
                 android:key="battery_bar_color"
                 android:summary="@string/BatteryBarColorSummary"
                 android:title="@string/BatteryBarColor" />
         </PreferenceCategory>
         <PreferenceCategory
-            android:title="@string/Battery3MinitTitle">
+            android:title="@string/BatteryStockTitle">
             <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
                 android:defaultValue="true"
                 android:key="hide_battery_stock"
                 android:summaryOff="@string/Hidden"
                 android:summaryOn="@string/Shown"
                 android:title="@string/BatteryStock" />
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="true"
+                android:key="display_battery_percentage"
+                android:summaryOff="@string/Hidden"
+                android:summaryOn="@string/Shown"
+                android:title="@string/BatteryStockPercentage" />
+            <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
+                android:defaultValue="#ffffffff"
+                android:dependency="hide_battery_stock"
+                android:key="battery_color"
+                android:summary="@string/WeatherColor"
+                android:title="@string/BatteryStockColor" />
+            <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
+                android:defaultValue="#ff000000"
+                android:dependency="hide_battery_stock"
+                android:key="battery_color_dark"
+                android:summary="@string/WeatherColor"
+                android:title="@string/BatteryStockColorDark" />
+        </PreferenceCategory>
+        <PreferenceCategory
+            android:title="@string/Battery3MinitTitle">
             <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
                 android:defaultValue="false"
                 android:key="minit_battery_visible"
@@ -258,13 +277,13 @@
         </PreferenceCategory>
         <PreferenceCategory
             android:title="@string/SignalDataIcon">
-        <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
-            android:defaultValue="true"
-            android:key="dataIcon"
-            android:summaryOff="@string/DataIcon4G"
-            android:summaryOn="@string/DataIconLTE"
-            android:title="@string/SignalDataIcon"
-            app:rebootDevice="true"/>
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:key="dataIcon"
+                android:summaryOff="@string/SignalDataIcon4G"
+                android:summaryOn="@string/SignalDataIconLTE"
+                android:title="@string/SignalDataIcon"
+                app:rebootDevice="true"/>
         </PreferenceCategory>
         <PreferenceCategory
             android:title="@string/SignalIcon">
@@ -350,9 +369,7 @@
         <PreferenceCategory
             android:title="@string/LockscreenClockColor">
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="true"
-                hexValue="true"
-                android:defaultValue="\#fffafafa"
+                android:defaultValue="#fffafafa"
                 android:dependency="hide_digital_hour"
                 android:key="kg_clock_hours_color"
                 android:summary="@string/WeatherColor"
@@ -360,9 +377,7 @@
                 app:isSilent="false"
                 app:packageNameToKill="com.android.systemui" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="true"
-                hexValue="true"
-                android:defaultValue="\#fffafafa"
+                android:defaultValue="#fffafafa"
                 android:dependency="hide_digital_min"
                 android:key="kg_clock_minutes_color"
                 android:summary="@string/WeatherColor"
@@ -370,9 +385,7 @@
                 app:isSilent="false"
                 app:packageNameToKill="com.android.systemui" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="true"
-                hexValue="true"
-                android:defaultValue="\#fffafafa"
+                android:defaultValue="#fffafafa"
                 android:dependency="hide_digital_sec"
                 android:key="kg_clock_second_color"
                 android:summary="@string/WeatherColor"
@@ -399,8 +412,7 @@
                 app:isSilent="false"
                 app:packageNameToKill="com.android.systemui" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="false"
-                android:defaultValue="\#ffffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="hide_nextalarm"
                 android:key="lockscreen_alarm_text_color"
                 android:summary="@string/WeatherColor"
@@ -623,8 +635,7 @@
             android:summaryOn="@string/Shown"
             android:title="@string/Weather" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_text"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherTextColor"
@@ -637,8 +648,7 @@
             android:summaryOn="@string/Shown"
             android:title="@string/WeatherGeo" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_location"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherGeoTextColor"
@@ -652,8 +662,7 @@
             android:summaryOn="@string/On"
             android:title="@string/WeatherBarometer" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:dependency="hide_weather"
             android:key="color_barometr"
             android:summary="@string/WeatherColor"
@@ -661,56 +670,49 @@
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_temp"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherDegreeColor"
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_high_temp"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherMaxTempColor"
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_low_temp"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherMinTempColor"
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_sunrise"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherSunriseTempColor"
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="text3"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherSunriseTextColor"
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="color_sunset"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherSunsetTempColor"
             app:isSilent="false"
             app:packageNameToKill="com.android.systemui" />
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            alphaSlider="false"
-            android:defaultValue="\#ffffffff"
+            android:defaultValue="#ffffffff"
             android:key="text4"
             android:summary="@string/WeatherColor"
             android:title="@string/WeatherSunsetTextColor"
@@ -732,6 +734,15 @@
                 android:title="@string/RecentQuickLaunchTitle" />
         </PreferenceCategory>
         <PreferenceCategory
+            android:title="@string/RecentBlur">
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:key="blur_background_image_visible"
+                android:summaryOff="@string/Disabled"
+                android:summaryOn="@string/Enabled"
+                android:title="@string/RecentBlurTitle" />
+        </PreferenceCategory>
+        <PreferenceCategory
             android:title="@string/RecentRamBar">
             <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
                 android:defaultValue="false"
@@ -740,17 +751,13 @@
                 android:summaryOn="@string/Enabled"
                 android:title="@string/RecentRamBarTitle" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="true"
-                hexValue="true"
-                android:defaultValue="\#ffffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="ram_bar_view"
                 android:key="free_ram_text"
                 android:title="@string/RecentRamBarFreeRam"
                 app:packageNameToKill="com.android.systemui" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                alphaSlider="true"
-                hexValue="true"
-                android:defaultValue="\#ffffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="ram_bar_view"
                 android:key="used_ram_text"
                 android:title="@string/RecentRamBarUsedRam"
@@ -765,7 +772,7 @@
                 android:summaryOn="@string/Enabled"
                 android:title="@string/RecentMatrixTitle" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="\#1eff00"
+                android:defaultValue="#1eff00"
                 android:dependency="matrix_anim"
                 android:key="recents_matrix_anim_text_color"
                 android:summary="@string/RecentMatrixTextColorSummary"
@@ -773,7 +780,7 @@
                 app:isSilent="false"
                 app:packageNameToKill="com.android.systemui" />
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="\#ff000000"
+                android:defaultValue="#ff000000"
                 android:dependency="matrix_anim"
                 android:key="recents_matrix_anim_bg_color"
                 android:summary="@string/RecentMatrixBackgroundColorSummary"
@@ -877,6 +884,15 @@
         android:summary="@string/NetworkSummary"
         android:title="@string/NetworkTitle">
         <PreferenceCategory
+            android:title="@string/NetworkSamsung">
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:key="network_speed"
+                android:summaryOff="@string/Hidden"
+                android:summaryOn="@string/Shown"
+                android:title="@string/NetworkSamsung" />
+        </PreferenceCategory>
+        <PreferenceCategory
             android:title="@string/Network">
             <com.wubydax.romcontrol.v2.prefs.MyListPreference
                 android:defaultValue="0"
@@ -949,21 +965,21 @@
                 android:summaryOn="@string/NetworkColorEach"
                 android:title="@string/NetworkColorSeparate"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="network_traffic_color"
                 android:title="@string/NetworkColorGlobal"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="network_traffic_global_color"
                 android:key="network_traffic_upload_color"
                 android:title="@string/NetworkColorUpload"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="network_traffic_global_color"
                 android:key="network_traffic_download_color"
                 android:title="@string/NetworkColorDownload"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="network_traffic_global_color"
                 android:key="network_traffic_arrow_color"
                 android:title="@string/NetworkColorTraffic"/>
@@ -981,47 +997,47 @@
             android:summaryOn="@string/Enabled"
             android:title="@string/StatusbarColorsGlobal"/>
         <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-            android:defaultValue="#ffffff"
+            android:defaultValue="#ffffffff"
             android:dependency="is_global_sb_color"
             android:key="global_sb_color"
             android:title="@string/StatusbarColorGlobal"/>
         <PreferenceCategory
             android:title="@string/StatusbarColors">
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:dependency="is_global_sb_color"
                 android:key="clock_color"
                 android:title="@string/StatusbarClockColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="wifi_signal_color"
                 android:title="@string/StatusbarWifiColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="mobile_signal_color"
                 android:title="@string/StatusbarSignalColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="mobile_type_color"
                 android:title="@string/StatusbarMobileColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="mobile_roaming_color"
                 android:title="@string/StatusbarRoamingColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="airplane_mode_color"
                 android:title="@string/StatusbarAirplaneColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="status_icons_color"
                 android:title="@string/StatusbarStatusColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="notification_icons_color"
                 android:title="@string/StatusbarNotificationColor"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#ffffff"
+                android:defaultValue="#ffffffff"
                 android:key="battery_percent_color"
                 android:title="@string/StatusbarBatteryColor"/>
         </PreferenceCategory>
@@ -1158,7 +1174,7 @@
                 app:isSilent="false"
                 app:packageNameToKill="com.android.systemui"/>
             <com.wubydax.romcontrol.v2.prefs.ColorPickerPreference
-                android:defaultValue="#e61e4e78"
+                android:defaultValue="#ff22c4ff"
                 android:dependency="data_usage_visibility"
                 android:key="data_usage_text_color"
                 android:title="@string/DataUsageColor"/>
@@ -1187,15 +1203,32 @@
             android:title="@string/AmbientTitle">
             <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
                 android:defaultValue="false"
-                android:key="doze_toggle"
+                android:key="doze_enabled"
                 android:summaryOff="@string/Disabled"
                 android:summaryOn="@string/Enabled"
                 android:title="@string/Ambient"
+                app:rebootDevice="true" />
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:dependency="doze_enabled"
+                android:key="doze_pulse_pickup"
+                android:summaryOff="@string/Disabled"
+                android:summaryOn="@string/Enabled"
+                android:title="@string/AmbientPickUp"
+                app:isSilent="false"
+                app:packageNameToKill="com.android.systemui" />
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:dependency="doze_enabled"
+                android:key="doze_vibrate_pickup"
+                android:summaryOff="@string/Disabled"
+                android:summaryOn="@string/Enabled"
+                android:title="@string/AmbientPickUpVibrate"
                 app:isSilent="false"
                 app:packageNameToKill="com.android.systemui" />
             <com.wubydax.romcontrol.v2.prefs.MyListPreference
                 android:defaultValue="10000"
-                android:dependency="doze_toggle"
+                android:dependency="doze_enabled"
                 android:entries="@array/ambient_light_entries"
                 android:entryValues="@array/ambient_light_values"
                 android:key="doze_timeout"
@@ -1222,9 +1255,9 @@
             <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
                 android:defaultValue="false"
                 android:key="imsservice"
-                android:summaryOff="@string/Off"
-                android:summaryOn="@string/On"
-                android:title="@string/Imsserivce"
+                android:summaryOff="@string/Hidden"
+                android:summaryOn="@string/Shown"
+                android:title="@string/MiscImsService"
                 app:rebootDevice="true" />
             <com.wubydax.romcontrol.v2.prefs.MyListPreference
                 android:defaultValue="3000"
@@ -1233,6 +1266,27 @@
                 android:key="button_key_light"
                 android:summary="%s"
                 android:title="@string/MiscKeyboard" />
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:key="torchlight_enable"
+                android:summaryOff="@string/Off"
+                android:summaryOn="@string/On"
+                android:summary="@string/MiscTorch"
+                android:title="@string/MiscTorch" />
+            <com.wubydax.romcontrol.v2.prefs.MyListPreference
+                android:defaultValue="15000"
+                android:dependency="torchlight_enable"
+                android:entries="@array/torchlight_timeout_entries"
+                android:entryValues="@array/torchlight_timeout_values"
+                android:key="torchlight_timeout"
+                android:title="@string/MiscTorchTimeout" />
+            <com.wubydax.romcontrol.v2.prefs.MySwitchPreference
+                android:defaultValue="false"
+                android:key="hide_keyboard_switcher"
+                android:summaryOff="@string/Hidden"
+                android:summaryOn="@string/Shown"
+                android:title="@string/MiscKeyboardSwitch"
+                app:rebootDevice="true" />
             <!--/*
             <com.wubydax.romcontrol.v2.prefs.MySeekBarPreference
                 android:defaultValue="17"

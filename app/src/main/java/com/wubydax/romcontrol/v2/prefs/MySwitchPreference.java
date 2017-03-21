@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 
-
 import com.wubydax.romcontrol.v2.MainActivity;
 import com.wubydax.romcontrol.v2.R;
 import com.wubydax.romcontrol.v2.utils.FileHelper;
@@ -62,7 +61,6 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
         typedArray.recycle();
         mContentResolver = context.getContentResolver();
         setOnPreferenceChangeListener(this);
-
     }
 
     @Override
@@ -120,27 +118,27 @@ public class MySwitchPreference extends SwitchPreference implements Preference.O
         }
 
     // Is running when DataIconSwitch is toggled
-if (getKey().equals("dataIcon")) {
-    try {
-        p = Runtime.getRuntime().exec("su");
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+    if (getKey().equals("dataIcon")) {
+        try {
+            p = Runtime.getRuntime().exec("su");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    if (dbInt == 1) {
-        //LTE
-        result = FileHelper.readFile(tempFile);
-        result = result.replace("<CscFeature_SystemUI_ConfigOverrideDataIcon>4G</CscFeature_SystemUI_ConfigOverrideDataIcon>", "<CscFeature_SystemUI_ConfigOverrideDataIcon>LTE</CscFeature_SystemUI_ConfigOverrideDataIcon>");
-        FileHelper.saveFile(result, tempFile);
-        FileHelper.copyFileToRoot(cmdTR, p);
-    } else if (dbInt == 0) {
-        //4G
-        result = FileHelper.readFile(tempFile);
-        result = result.replace("<CscFeature_SystemUI_ConfigOverrideDataIcon>LTE</CscFeature_SystemUI_ConfigOverrideDataIcon>", "<CscFeature_SystemUI_ConfigOverrideDataIcon>4G</CscFeature_SystemUI_ConfigOverrideDataIcon>");
-        FileHelper.saveFile(result, tempFile);
-        FileHelper.copyFileToRoot(cmdTR, p);
+        if (dbInt == 1) {
+            //LTE
+            result = FileHelper.readFile(tempFile);
+            result = result.replace("<CscFeature_SystemUI_ConfigOverrideDataIcon>4G</CscFeature_SystemUI_ConfigOverrideDataIcon>", "<CscFeature_SystemUI_ConfigOverrideDataIcon>LTE</CscFeature_SystemUI_ConfigOverrideDataIcon>");
+            FileHelper.saveFile(result, tempFile);
+            FileHelper.copyFileToRoot(cmdTR, p);
+        } else if (dbInt == 0) {
+            //4G
+            result = FileHelper.readFile(tempFile);
+            result = result.replace("<CscFeature_SystemUI_ConfigOverrideDataIcon>LTE</CscFeature_SystemUI_ConfigOverrideDataIcon>", "<CscFeature_SystemUI_ConfigOverrideDataIcon>4G</CscFeature_SystemUI_ConfigOverrideDataIcon>");
+            FileHelper.saveFile(result, tempFile);
+            FileHelper.copyFileToRoot(cmdTR, p);
+        }
     }
-}
 
     if(getKey().equals("imsservice")) {
         try {
@@ -162,9 +160,7 @@ if (getKey().equals("dataIcon")) {
         }
     }
 
-
     return true;
-
     }
 
 
