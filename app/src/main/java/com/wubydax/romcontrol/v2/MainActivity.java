@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         FileHelper.copyFileToTemp(cmdRT, p);
-                result = FileHelper.readFile(tempFile);
-                FileHelper.investInput(result, tempFile);
-                FileHelper.copyFileToRoot(cmdTR, p);
+        result = FileHelper.readFile(tempFile);
+        //FileHelper.investInput(result, tempFile);
+       // FileHelper.copyFileToRoot(cmdTR, p);
 
 
 
@@ -274,6 +274,17 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(direct.isDirectory()) {
+            String[] childern = direct.list();
+            for(int i = 0; i < childern.length; i++) {
+                new File(direct, childern[i]).delete();
+            }
+            direct.delete();
+        }
+    }
 
     @Override
     public void onRestoreRequested(String filePath, boolean isConfirmed) {
