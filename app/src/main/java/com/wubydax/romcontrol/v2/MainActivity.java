@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         FileHelper.copyFileToTemp(cmdRT, p);
         result = FileHelper.readFile(tempFile);
         //FileHelper.investInput(result, tempFile);
-       // FileHelper.copyFileToRoot(cmdTR, p);
+        //FileHelper.copyFileToRoot(cmdTR, p);
 
 
 
@@ -277,9 +277,9 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
         super.onDestroy();
         if(direct.isDirectory()) {
-            String[] childern = direct.list();
-            for(int i = 0; i < childern.length; i++) {
-                new File(direct, childern[i]).delete();
+            String[] children = direct.list();
+            for(int i = 0; i < children.length; i++) {
+                new File(direct, children[i]).delete();
             }
             direct.delete();
         }
