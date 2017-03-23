@@ -8,21 +8,11 @@
     Add as many items as you want or delete some if those are too many
     This order is how they will appear in the dialog
     Make any order you want from top to bottom-->
-    <string-array name="changelog_items">
-        <item>Updated base to DQBO release</item>
-        <item>Updated all kernels with latest ramdisk DQBO</item>
-        <item>Left signal hidden on lockscreen (before it showed on right side)</item>
-        <item>Updated samsung pay apps and framework</item>
-        <item>Reworked RomControl app (nearly ready for PlayStore)</item>
-        <item>Pulldown menu is now fully colorable</item>
-        <item>Blur in pulldown added</item>
-        <item>Custom signal/wifi/alarm icons added</item>
-        <item>Colorable notifications</item>
-        <item>Colorable clock on lockscreen</item>
-        <item>Back to kill option added</item>
-        <item>Kernels updated with DQB7 ramdisk</item>
-        <item>All included BL to DQBO updated</item>
-        <item>Many SystemUI tweaks, please check XDA or Telegram for full changelog</item>
+    <string-array name="changelog_items" translatable="false">
+        <item>Based on DQC5 release</item>
+        <item>Remodded on latest March base</item>
+        <item>All kernels update with latest DQC5 base and ramdisk</item>
+        <item>Please check telegram or xda for full changelog</item>
     </string-array>
 
     <!--This will be the dialog title.

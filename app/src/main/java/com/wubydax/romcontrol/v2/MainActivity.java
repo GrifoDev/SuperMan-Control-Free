@@ -274,18 +274,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(direct.isDirectory()) {
-            String[] children = direct.list();
-            for(int i = 0; i < children.length; i++) {
-                new File(direct, children[i]).delete();
-            }
-            direct.delete();
-        }
-    }
-
-    @Override
     public void onRestoreRequested(String filePath, boolean isConfirmed) {
         if (isConfirmed) {
             launchBackupRestoreService(1, filePath);
@@ -297,5 +285,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public View getDecorView() {
         return getWindow().getDecorView();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(direct.isDirectory()) {
+            String[] children = direct.list();
+            for(int i = 0; i < children.length; i++) {
+                new File(direct, children[i]).delete();
+            }
+            direct.delete();
+        }
     }
 }
