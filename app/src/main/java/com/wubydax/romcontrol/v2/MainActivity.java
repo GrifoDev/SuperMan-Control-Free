@@ -4,11 +4,15 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.wubydax.romcontrol.v2.utils.BackupRestoreIntentService;
 import com.wubydax.romcontrol.v2.utils.Constants;
@@ -27,6 +32,7 @@ import com.wubydax.romcontrol.v2.utils.SuTask;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.jar.Manifest;
 
 /*      Created by Roberto Mariani and Anna Berkovitch, 2015-2016
         This program is free software: you can redistribute it and/or modify
@@ -54,6 +60,7 @@ public class MainActivity extends AppCompatActivity
     private final String cmdRT = "cat /system/csc/others.xml > " + Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME + "\n";
     private final String cmdTR = "cat " +Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME + " > /system/csc/others.xml\n";
     private String result;
+    private final int PERM_READ_STORAGE = 0;
     private final File tempFile = new File(Environment.getExternalStorageDirectory() + "/.tmpRC/" + TEMP_FILE_NAME);
     File direct = new File(Environment.getExternalStorageDirectory() + "/.tmpRC");
     Process p;
@@ -79,6 +86,13 @@ public class MainActivity extends AppCompatActivity
         }
         setTitle(titles[lastFragmentIndex]);
         initViews();
+
+        if(ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+        } else {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, PERM_READ_STORAGE);
+        }
+
         try {
             p = Runtime.getRuntime().exec("su");
         } catch (IOException e) {
@@ -95,6 +109,32 @@ public class MainActivity extends AppCompatActivity
 
 
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERM_READ_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Perm granted
+                    try {
+                        p = Runtime.getRuntime().exec("su");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    if (!direct.exists()) {
+                        direct.mkdir(); //directory is created;
+                    }
+
+                    FileHelper.copyFileToTemp(cmdRT, p);
+                    result = FileHelper.readFile(tempFile);
+                } else {
+                    //Perm not ok
+                    Toast.makeText(MainActivity.this, "Please grant Storage permission to use the app properly", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 
     private void initViews() {
