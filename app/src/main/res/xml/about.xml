@@ -9,13 +9,46 @@
         <PreferenceScreen
             android:icon="@drawable/paypal"
             android:summary="@string/PayPalSummary"
-            android:title="@string/PayPal">
+            android:title="@string/PayPalTkkg">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://www.paypal.me/LucaGrifo" />
         </PreferenceScreen>
+        <PreferenceScreen
+            android:icon="@drawable/paypal"
+            android:summary="@string/PayPalSummary"
+            android:title="@string/PayPalMyellow">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.me/YUHS" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:icon="@drawable/paypal"
+            android:summary="@string/PayPalSummary"
+            android:title="@string/PayPalAlex">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.me/AlessandroCerv" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:icon="@drawable/paypal"
+            android:summary="@string/PayPalSummary"
+            android:title="@string/PayPalLeeXxXo">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.me/thefr3ak" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:icon="@drawable/paypal"
+            android:summary="@string/PayPalSummary"
+            android:title="@string/PayPalMisterEvo">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.me/LSommerfeld" />
+        </PreferenceScreen>
     </PreferenceCategory>
-  
+
+    <!--/*
     <PreferenceCategory
         android:title="@string/AboutPlayStore">
         <PreferenceScreen
@@ -27,6 +60,7 @@
                 android:data="https://play.google.com/store/apps/details?id=com.wubydax.romcontrol.supercontrolpro" />
         </PreferenceScreen>
     </PreferenceCategory>
+    */-->
 
     <PreferenceCategory
         android:title="@string/AboutAFH">
@@ -116,13 +150,6 @@
                 android:data="https://forum.xda-developers.com/member.php?u=5899304" />
         </PreferenceScreen>
         <PreferenceScreen
-            android:summary="@string/AboutDeveloperSummary"
-            android:title="@string/AboutGayos">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://forum.xda-developers.com/member.php?u=7158231" />
-        </PreferenceScreen>
-        <PreferenceScreen
             android:summary="@string/AboutDesignerSummary"
             android:title="@string/AboutYellow">
             <intent
@@ -137,7 +164,14 @@
                 android:data="https://forum.xda-developers.com/member.php?u=4947202" />
         </PreferenceScreen>
         <PreferenceScreen
-            android:summary="@string/AboutDeveloperSummary"
+            android:summary="@string/AboutWebsiteSummary"
+            android:title="@string/AboutLeeXxXo">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://forum.xda-developers.com/member.php?u=5760756" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:summary="@string/AboutSupporterSummary"
             android:title="@string/AboutMisterEvo">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -166,14 +200,14 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/AboutGooglePlus">
+        android:title="@string/AboutGrifoDev">
         <PreferenceScreen
-            android:icon="@drawable/gplus"
-            android:summary="@string/AboutGooglePlusSummary"
-            android:title="@string/AboutGooglePlus">
+            android:icon="@drawable/gd"
+            android:summary="@string/AboutGrifoDevSummary"
+            android:title="@string/AboutGrifoDev">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://plus.google.com/communities/108548285682852156652" />
+                android:data="https://www.grifodev.ch/" />
         </PreferenceScreen>
     </PreferenceCategory>
 

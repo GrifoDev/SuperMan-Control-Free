@@ -9,20 +9,20 @@
     This order is how they will appear in the dialog
     Make any order you want from top to bottom-->
     <string-array name="changelog_items" translatable="false">
-        <item>Rebased on DQD3</item>
-        <item>Includes April security patch</item>
-        <item>kernel updated to 2.5.1 version</item>
+        <item>Rebased on DQG1</item>
+        <item>Includes July security patch</item>
+        <item>kernel updated to 2.7.1 version</item>
         <item>Included bootloader/modem updated</item>
-        <item>Camera mod updated</item>
-        <item>Magisk updated to V12</item>
-        <item>phh superuser updated to r310</item>
-        <item>Fixed problem with barometer on lockscreen</item>
+        <item>Removed s8 camera mod, we have a full s8 port for that</item>
+        <item>Magisk updated to V13.3</item>
+        <item>SuperSU updated to 2.82 SR1</item>
+        <item>Many other changes, please check on Grifo Dev </item>
     </string-array>
 
     <!--This will be the dialog title.
     Put your own rom version and name.
     Have fun-->
-    <string name="rom_version_for_changelog" translatable="false">SuperMan-Rom V2.5.0</string>
+    <string name="rom_version_for_changelog" translatable="false">SuperMan-Rom V2.6.0</string>
 
 
 </resources>
