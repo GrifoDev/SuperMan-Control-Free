@@ -64,6 +64,11 @@
     <string name="reboot_now_dialog_button">reboot now</string>
     <string name="imminent_reboot_warning">Your device will reboot IMMEDIATELY upon script completion!!!</string>
     <string name="restore_dialog_description">This action will restore the following items to stock colors</string>
+    <string name="multiple_choice_preference_button_done">Done</string>
+    <string name="deselect_all">Deselect all</string>
+    <string name="select_all">Select all</string>
+    <string name="debloat_rom_menu_title">Debloat rom</string>
+    <string name="select_all_label">All</string>
     <string name="LightTheme">Light Theme</string>
     <string name="DarkTheme">Dark Theme</string>
     <string name="RestoreData">Restore Data</string>
