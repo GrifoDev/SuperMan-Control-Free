@@ -209,4 +209,16 @@
         </PreferenceScreen>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/AboutGrifoDev">
+        <PreferenceScreen
+            android:icon="@drawable/gd"
+            android:summary="@string/AboutGrifoDevSummary"
+            android:title="@string/AboutGrifoDev">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.grifodev.ch/" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
 </PreferenceScreen>
