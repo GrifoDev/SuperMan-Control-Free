@@ -384,11 +384,13 @@
         <item>@string/RightClock</item>
         <item>@string/CenterClock</item>
         <item>@string/LeftClock</item>
+        <item>@string/Hidden</item>
     </string-array>
     <string-array name="clock_style_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="clock_format_entries">
@@ -619,6 +621,8 @@
         <item>@drawable/signal14</item>
         <item>@drawable/signal15</item>
         <item>@drawable/signal16</item>
+        <item>@drawable/signal17</item>
+        <item>@drawable/signal18</item>
     </array>
     <string-array name="signal_entries">
         <item>@string/Signal1</item>
@@ -637,6 +641,8 @@
         <item>@string/Signal14</item>
         <item>@string/Signal15</item>
         <item>@string/Signal16</item>
+        <item>@string/Signal17</item>
+        <item>@string/Signal18</item>
     </string-array>
     <string-array name="signal_values" translatable="false">
         <item>1</item>
@@ -655,6 +661,8 @@
         <item>14</item>
         <item>15</item>
         <item>16</item>
+        <item>17</item>
+        <item>18</item>
     </string-array>
 
     <array name="wifi_drawables">
@@ -714,12 +722,13 @@
     </string-array>
 
     <array name="alarm_drawables">
-        <item>@drawable/alarm1</item>
-        <item>@drawable/alarm2</item>
-        <item>@drawable/alarm3</item>
-        <item>@drawable/alarm4</item>
-        <item>@drawable/alarm5</item>
-        <item>@drawable/alarm6</item>
+        <item>@drawable/alarm_1</item>
+        <item>@drawable/alarm_2</item>
+        <item>@drawable/alarm_3</item>
+        <item>@drawable/alarm_4</item>
+        <item>@drawable/alarm_5</item>
+        <item>@drawable/alarm_6</item>
+        <item>@drawable/alarm_7</item>
     </array>
     <string-array name="alarm_entries">
         <item>@string/SignalAlarm1</item>
@@ -728,6 +737,7 @@
         <item>@string/SignalAlarm4</item>
         <item>@string/SignalAlarm5</item>
         <item>@string/SignalAlarm6</item>
+        <item>@string/SignalAlarm7</item>
     </string-array>
     <string-array name="alarm_values" translatable="false">
         <item>1</item>
@@ -736,6 +746,45 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <array name="location_drawables">
+        <item>@drawable/location1</item>
+        <item>@drawable/location2</item>
+        <item>@drawable/location3</item>
+        <item>@drawable/location4</item>
+        <item>@drawable/location5</item>
+        <item>@drawable/location6</item>
+        <item>@drawable/location7</item>
+        <item>@drawable/location8</item>
+        <item>@drawable/location9</item>
+        <item>@drawable/location10</item>
+    </array>
+    <string-array name="location_entries">
+        <item>@string/SignalLocation1</item>
+        <item>@string/SignalLocation2</item>
+        <item>@string/SignalLocation3</item>
+        <item>@string/SignalLocation4</item>
+        <item>@string/SignalLocation5</item>
+        <item>@string/SignalLocation6</item>
+        <item>@string/SignalLocation7</item>
+        <item>@string/SignalLocation8</item>
+        <item>@string/SignalLocation9</item>
+        <item>@string/SignalLocation10</item>
+    </string-array>
+    <string-array name="location_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
     <!-- Arrays for lockscreen timeout delay -->
@@ -834,6 +883,10 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
     <string-array name="qs_tile_column_landscape_values" translatable="false">
         <item>2</item>
@@ -843,6 +896,10 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
     <string-array name="qs_tile_row_entries" translatable="false">
@@ -858,6 +915,27 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+    </string-array>
+
+    <string-array name="quick_qs_button_entries" translatable="false">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="quick_qs_button_values" translatable="false">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
     <string-array name="immersive_entries">
@@ -921,6 +999,21 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+    </string-array>
+
+    <string-array name="tweaks_custom_home_entries">
+        <item>Default</item>
+        <item>Toggle Flashlight</item>
+        <item>Full Screenshot</item>
+        <item>Custom App</item>
+        <item>Kill active app</item>
+    </string-array>
+    <string-array name="tweaks_custom_home_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
     </string-array>
 
 </resources>
